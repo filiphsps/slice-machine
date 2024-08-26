@@ -473,7 +473,7 @@ async function updatePackageJSON(
 
 type SliceMachineConfig = {
   localSliceSimulatorURL?: string;
-  apiEndpoint?: string;
+  apiEndpoint?: string | string[];
 };
 
 /**

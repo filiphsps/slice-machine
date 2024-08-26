@@ -20,9 +20,9 @@ const useServerState = () => {
       handleRefreshState(serverState);
 
       Sentry.setUser({ id: serverState.env.shortId });
-      Sentry.setTag("repository", serverState.env.repo);
+      Sentry.setTag("repository", serverState.env.repos[0]); // FIXME: Don't hardcode.
       Sentry.setContext("Repository Data", {
-        name: serverState.env.repo,
+        name: serverState.env.repos[0], // FIXME: Don't hardcode.
       });
     }
 

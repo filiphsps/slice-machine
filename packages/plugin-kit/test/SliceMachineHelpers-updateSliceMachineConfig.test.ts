@@ -5,7 +5,7 @@ it("updates Slice Machine project config", async (ctx) => {
 
 	const newConfig = {
 		...preProject.config,
-		repositoryName: "updatedRepositoryName",
+		repositoryName: ["updatedRepositoryName"],
 	};
 
 	await ctx.pluginRunner.rawHelpers.updateSliceMachineConfig(newConfig);

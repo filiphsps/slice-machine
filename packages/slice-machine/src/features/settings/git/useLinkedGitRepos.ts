@@ -12,22 +12,27 @@ type UseLinkedGitReposReturnType = {
 
 export function useLinkedGitRepos(): UseLinkedGitReposReturnType {
   const [config] = useSliceMachineConfig();
-  const linkedGitRepos = useRequest(getLinkedGitRepos, [config.repositoryName]);
+  const repositoryName =
+    typeof config.repositoryName === "string"
+      ? config.repositoryName
+      : config.repositoryName[0]; // FIXME: Don't hardcode.
+
+  const linkedGitRepos = useRequest(getLinkedGitRepos, [repositoryName]);
   return {
     linkedGitRepos,
     linkRepo: async (git) => {
       await managerClient.git.linkRepo({
-        prismic: { domain: config.repositoryName },
+        prismic: { domain: repositoryName },
         git,
       });
-      await revalidateData(getLinkedGitRepos, [config.repositoryName]);
+      await revalidateData(getLinkedGitRepos, [repositoryName]);
     },
     unlinkRepo: async (git) => {
       await managerClient.git.unlinkRepo({
-        prismic: { domain: config.repositoryName },
+        prismic: { domain: repositoryName },
         git,
       });
-      await revalidateData(getLinkedGitRepos, [config.repositoryName]);
+      await revalidateData(getLinkedGitRepos, [repositoryName]);
     },
   };
 }

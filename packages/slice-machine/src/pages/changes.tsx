@@ -58,10 +58,12 @@ const Changes: React.FunctionComponent = () => {
   const [isToastOpen, setIsToastOpen] = useState(false);
   const { eligible: isPromptToCreateContentExperimentEligible } =
     usePromptToCreateContentExperiment();
-  const { repositoryName } = useRepositoryInformation();
+  const { repositoryNames } = useRepositoryInformation();
 
-  const documentsListEndpoint =
-    createDocumentsListEndpointFromRepoName(repositoryName);
+  // FIXME: Don't hardcode the first repository name.
+  const documentsListEndpoint = createDocumentsListEndpointFromRepoName(
+    repositoryNames[0],
+  );
 
   const numberOfChanges = unSyncedSlices.length + unSyncedCustomTypes.length;
 

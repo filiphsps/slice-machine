@@ -1,23 +1,25 @@
 import { useSelector } from "react-redux";
 
-import { getApiEndpoint, getRepoName } from "@/modules/environment";
+import { getApiEndpoint, getRepoNames } from "@/modules/environment";
 import { SliceMachineStoreType } from "@/redux/type";
 
 // TODO: This hook should be extracted to a new manager endpoint
 export function useRepositoryInformation() {
-  const { repositoryName, apiEndpoint } = useSelector(
+  const { repositoryNames, apiEndpoint } = useSelector(
     (store: SliceMachineStoreType) => ({
-      repositoryName: getRepoName(store),
+      repositoryNames: getRepoNames(store),
       apiEndpoint: getApiEndpoint(store),
     }),
   );
-  const repositoryDomain = new URL(apiEndpoint).hostname.replace(".cdn", "");
-  const repositoryUrl = apiEndpoint
+  const repositoryDomain = new URL(
+    apiEndpoint[0], // FIXME: Don't hardcode.
+  ).hostname.replace(".cdn", "");
+  const repositoryUrl = apiEndpoint[0] // FIXME: Don't hardcode.
     .replace(".cdn.", ".")
     .replace("/api/v2", "");
 
   return {
-    repositoryName,
+    repositoryNames,
     repositoryDomain,
     repositoryUrl,
   };

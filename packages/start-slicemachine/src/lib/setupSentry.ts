@@ -43,7 +43,12 @@ export const setupSentry = async (
 	if (userProfile) {
 		Sentry.setUser({ id: userProfile.shortId });
 	}
-	Sentry.setTag("repository", sliceMachineConfig.repositoryName);
+	Sentry.setTag(
+		"repository",
+		typeof sliceMachineConfig.repositoryName === "string"
+			? sliceMachineConfig.repositoryName
+			: sliceMachineConfig.repositoryName[0],
+	);
 	Sentry.setContext("Repository Data", {
 		name: sliceMachineConfig.repositoryName,
 	});

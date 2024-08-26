@@ -42,7 +42,7 @@ const apiEndpoint = new t.Type<string>(
 
 export const Manifest = t.intersection([
   t.type({
-    apiEndpoint,
+    apiEndpoint: t.array(apiEndpoint),
   }),
   t.partial({
     localSliceSimulatorURL: t.string,

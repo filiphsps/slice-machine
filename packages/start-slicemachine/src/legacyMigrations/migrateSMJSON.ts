@@ -90,7 +90,7 @@ ${chalk.bgYellow(` ${chalk.black("WARN")} `)} ${chalk.magenta(
 	const sliceMachineConfig: SliceMachineConfig = {
 		apiEndpoint: smJSON.apiEndpoint,
 		// Infer repository name from API endpoint
-		repositoryName: new URL(smJSON.apiEndpoint).host.split(".")[0],
+		repositoryName: [new URL(smJSON.apiEndpoint).host.split(".")[0]],
 		adapter: framework.adapterName,
 		libraries,
 	};

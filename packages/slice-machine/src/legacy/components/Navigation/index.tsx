@@ -33,7 +33,7 @@ import { UpdateBox } from "./UpdateBox";
 
 const Navigation: FC = () => {
   const router = useRouter();
-  const { repositoryName, repositoryDomain, repositoryUrl } =
+  const { repositoryNames, repositoryDomain, repositoryUrl } =
     useRepositoryInformation();
   const gitIntegrationExperiment = useGitIntegrationExperiment();
   const [isSliceLibraryDialogOpen, setIsSliceLibraryDialogOpen] =
@@ -55,7 +55,7 @@ const Navigation: FC = () => {
       />
 
       <SideNavRepository
-        repositoryName={repositoryName}
+        repositoryNames={repositoryNames}
         repositoryDomain={repositoryDomain}
         href={repositoryUrl}
       />

@@ -15,7 +15,7 @@ export interface FrontEndEnvironment {
   shortId?: string;
   intercomHash?: string;
   manifest: Manifest;
-  repo: string;
+  repos: string[];
   packageManager: PackageManager;
   endpoints: APIEndpoints;
 }

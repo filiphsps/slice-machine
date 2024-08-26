@@ -1,5 +1,5 @@
 {
-  "repositoryName": "upgrade-optimize-full-legacy",
+  "repositoryName": ["upgrade-optimize-full-legacy"],
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./slices"],
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"

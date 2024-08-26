@@ -239,7 +239,9 @@ export class ProjectManager extends BaseManager {
 	async getRepositoryName(): Promise<string> {
 		const sliceMachineConfig = await this.getSliceMachineConfig();
 
-		return sliceMachineConfig.repositoryName;
+		return typeof sliceMachineConfig.repositoryName === "string"
+			? sliceMachineConfig.repositoryName
+			: sliceMachineConfig.repositoryName[0]; // FIXME: Don't hardcode.
 	}
 
 	/**

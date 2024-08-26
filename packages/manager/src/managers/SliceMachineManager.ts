@@ -45,10 +45,10 @@ type SliceMachineManagerGetStateReturnType = {
 		shortId?: string;
 		intercomHash?: string;
 		manifest: {
-			apiEndpoint: string;
+			apiEndpoint: string[];
 			localSliceSimulatorURL?: string;
 		};
-		repo: string;
+		repos: string[];
 		packageManager: PackageManager;
 		endpoints: APIEndpoints;
 	};
@@ -250,18 +250,28 @@ export class SliceMachineManager {
 						status: 401, // Needed to trigger the unauthorized flow.
 				  });
 
+		const repositoryNames =
+			typeof sliceMachineConfig.repositoryName === "string"
+				? [sliceMachineConfig.repositoryName]
+				: sliceMachineConfig.repositoryName;
+
+		const apiEndpoints =
+			typeof sliceMachineConfig.apiEndpoint === "string"
+				? [sliceMachineConfig.apiEndpoint]
+				: sliceMachineConfig.apiEndpoint;
+
 		return {
 			env: {
 				manifest: {
-					apiEndpoint:
-						sliceMachineConfig.apiEndpoint ||
-						buildPrismicRepositoryAPIEndpoint(
-							sliceMachineConfig.repositoryName,
-						),
+					apiEndpoint: repositoryNames.map(
+						(repositoryName, index) =>
+							apiEndpoints?.[index] ||
+							buildPrismicRepositoryAPIEndpoint(repositoryName),
+					),
 					localSliceSimulatorURL: sliceMachineConfig.localSliceSimulatorURL,
 				},
 				packageManager,
-				repo: sliceMachineConfig.repositoryName,
+				repos: repositoryNames,
 				intercomHash: profile?.intercomHash,
 				shortId: profile?.shortId,
 				endpoints: this.getAPIEndpoints(),

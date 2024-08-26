@@ -28,7 +28,7 @@ export const SideNavLogo: FC = () => {
 };
 
 type SideNavRepositoryProps = {
-  repositoryName: string;
+  repositoryNames: string[];
   repositoryDomain: string;
   href: string;
 };
@@ -36,12 +36,12 @@ type SideNavRepositoryProps = {
 export const SideNavRepository: FC<SideNavRepositoryProps> = ({
   href,
   repositoryDomain,
-  repositoryName,
+  repositoryNames,
 }) => {
   return (
     <div className={styles.repository}>
       <div className={styles.repositoryInfo}>
-        <h1 className={styles.repositoryName}>{repositoryName}</h1>
+        <h1 className={styles.repositoryName}>{repositoryNames.join(", ")}</h1>
 
         <h2 className={styles.repositoryDomain}>{repositoryDomain}</h2>
       </div>

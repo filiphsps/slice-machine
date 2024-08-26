@@ -6,7 +6,9 @@ const slicemachineConfig = require("./slicemachine.config.json");
  * @returns {import('next').NextConfig}
  */
 module.exports = async () => {
-  const client = prismic.createClient(slicemachineConfig.repositoryName);
+  const client = prismic.createClient(
+    slicemachineConfig.repositoryName[0] // FIXME: Don't hardcode.
+  );
 
   const repository = await client.getRepository();
   const locales = repository.languages.map((lang) => lang.id);

@@ -53,7 +53,9 @@ const LoginModal: React.FunctionComponent = () => {
   const { closeModals, startLoadingLogin, stopLoadingLogin } =
     useSliceMachineActions();
 
-  const prismicBase = preferWroomBase(env.manifest.apiEndpoint);
+  const prismicBase = preferWroomBase(
+    env.manifest.apiEndpoint[0], // FIXME: Don't hardcode.
+  );
   const loginRedirectUrl = `${
     buildEndpoints(prismicBase + "/").Dashboard.cliLogin
   }&port=${window.location.port || "9999"}&path=/api/auth`;

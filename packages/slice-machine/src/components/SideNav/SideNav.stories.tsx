@@ -73,7 +73,7 @@ export const Default = {
         />
 
         <SideNavRepository
-          repositoryName="really long repository name"
+          repositoryNames={["really long repository name"]}
           repositoryDomain="really-long-repository-name.primsic.io"
           href="https://foo.prismic.io"
         />

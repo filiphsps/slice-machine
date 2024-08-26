@@ -5,10 +5,10 @@ export const dummyServerState: Pick<
   "env" | "customTypes" | "remoteCustomTypes" | "libraries"
 > = {
   env: {
-    repo: "sm-env-example",
+    repos: ["sm-env-example"],
     manifest: {
       libraries: ["~/slices"],
-      apiEndpoint: "https://sm-env-example.prismic.io/api/v2",
+      apiEndpoint: ["https://sm-env-example.prismic.io/api/v2"],
       chromaticAppId: "5f5b34f06f304800225c4e17",
       tracking: false,
       localSliceSimulatorURL: "http://localhost:3000/slice-simulator",

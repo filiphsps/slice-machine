@@ -20,7 +20,7 @@ A basic Slice Machine configuration file looks like this:
 // slicemachine.config.json
 
 {
-  "repositoryName": "example-prismic-repo",
+  "repositoryName": ["example-prismic-repo"],
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"],
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"

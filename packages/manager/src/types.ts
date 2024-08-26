@@ -24,9 +24,9 @@ export type SliceMachineConfigPluginRegistration<
  */
 export type SliceMachineConfig = {
 	// TODO: Can we make `apiEndpoint` optional?
-	apiEndpoint?: string;
+	apiEndpoint?: string | string[];
 	// NOTE: This is a new property.
-	repositoryName: string;
+	repositoryName: string | string[];
 	localSliceSimulatorURL?: string;
 	libraries?: string[];
 	adapter: SliceMachineConfigPluginRegistration;

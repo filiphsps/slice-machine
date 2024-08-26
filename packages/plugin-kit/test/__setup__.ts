@@ -45,7 +45,7 @@ beforeEach(async (ctx) => {
 	const config = {
 		adapter: adapter.meta.name,
 		libraries: ["./slices"],
-		repositoryName: "qwerty",
+		repositoryName: ["qwerty"],
 		apiEndpoint: "https://qwerty.cdn.prismic.io/api/v2",
 	} satisfies SliceMachineConfig;
 

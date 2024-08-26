@@ -1,5 +1,5 @@
 {
-	"repositoryName": "cimsirp",
+	"repositoryName": ["cimsirp"],
 	"libraries": [
 		"slices/ecommerce",
 		"slices/marketing",

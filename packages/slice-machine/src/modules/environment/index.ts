@@ -42,10 +42,10 @@ export const selectSimulatorUrl = (
   return store.environment.manifest.localSliceSimulatorURL;
 };
 
-export const getRepoName = (store: SliceMachineStoreType): string =>
-  store.environment.repo;
+export const getRepoNames = (store: SliceMachineStoreType): string[] =>
+  store.environment.repos;
 
-export const getApiEndpoint = (store: SliceMachineStoreType): string =>
+export const getApiEndpoint = (store: SliceMachineStoreType): string[] =>
   store.environment.manifest.apiEndpoint;
 
 export const selectEndpoints = (store: SliceMachineStoreType): APIEndpoints =>

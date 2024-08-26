@@ -18,11 +18,11 @@ const SliceMachineConfigPluginRegistrationCodec = t.union([
 
 const SliceMachineConfigCodec = t.intersection([
 	t.type({
-		repositoryName: t.string,
+		repositoryName: t.union([t.string, t.array(t.string)]),
 		adapter: SliceMachineConfigPluginRegistrationCodec,
 	}),
 	t.partial({
-		apiEndpoint: t.string,
+		apiEndpoint: t.union([t.string, t.array(t.string)]),
 		libraries: t.array(t.string),
 		localSliceSimulatorURL: t.string,
 		plugins: t.array(SliceMachineConfigPluginRegistrationCodec),
